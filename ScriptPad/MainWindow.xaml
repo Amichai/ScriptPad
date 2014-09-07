@@ -1,0 +1,21 @@
+﻿<Window x:Class="ScriptPad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid PreviewKeyDown="Grid_PreviewKeyDown">
+        <!--Items source of input text boxes and output-->
+        <ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{Binding OutputText}"></TextBlock>
+                <TextBox Grid.Row="1" AcceptsReturn="True" AcceptsTab="True" Name="inputText"></TextBox>
+                <TextBlock Grid.Row="2"></TextBlock>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
