@@ -3,8 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindow" Height="350" Width="525">
-    <Grid PreviewKeyDown="Grid_PreviewKeyDown">
-        <!--Items source of input text boxes and output-->
+    <TabControl>
+        <TabItem Header="Using Statements">
+            <StackPanel>
+                <ListBox ItemsSource="{Binding UsingStatements}">
+                    
+                </ListBox>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="100" Text="{Binding NewUsingStatement}"></TextBox>
+                    <Button Width="60" Click="AddUsingStatement_Click">Add</Button>
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="REPL">
+            <Grid PreviewKeyDown="Grid_PreviewKeyDown">
         <ScrollViewer>
             <Grid>
                 <Grid.RowDefinitions>
@@ -12,10 +24,21 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding OutputText}"></TextBlock>
+                <ItemsControl ItemsSource="{Binding ResultLines.Lines}" Grid.Row="0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Prefix}"></TextBlock>
+                                <TextBlock Text="{Binding Value}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
                 <TextBox Grid.Row="1" AcceptsReturn="True" AcceptsTab="True" Name="inputText"></TextBox>
                 <TextBlock Grid.Row="2"></TextBlock>
             </Grid>
         </ScrollViewer>
     </Grid>
+        </TabItem>
+    </TabControl>
 </Window>
