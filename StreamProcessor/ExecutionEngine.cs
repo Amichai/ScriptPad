@@ -32,7 +32,12 @@ namespace StreamProcessor {
         private AssemblyReferences refs = new AssemblyReferences();
         private List<string> namespaces = new List<string>();
 
-        public object Execute(string input) {
+
+        public T Eval<T>(string input) {
+            return (T)this.Execute(input).ReturnValue;
+        }
+
+        public ScriptResult Execute(string input) {
             var r = this.engine.Execute(input, null, refs, namespaces, session);
             return r;
         }

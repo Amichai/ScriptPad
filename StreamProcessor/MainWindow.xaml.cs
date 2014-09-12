@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,6 +35,7 @@ namespace StreamProcessor {
                 foreach (var i in e.NewItems) {
                     var ds = i as DataStream;
                     string toExecute = ds.GetCode();
+                    
                     //var toExecute = "object " + ds.Name + "() { return " + ds.Function + "; }";
                     //StateManager.Engine.Execute(toExecute);
                 }

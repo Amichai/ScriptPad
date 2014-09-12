@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements>
+  <PixelFunc Width="100" Height="100" Name="t1"
+             R="double s=3.0/(j+99);
+    ((int)((i+DIM)*s+j*s)%2+(int)((DIM*2-i)*s+j*s)%2)*127"
+             G="double s=3.0/(j+99);
+    ((int)((i+DIM)*s+j*s)%2+(int)((DIM*2-i)*s+j*s)%2)*127"
+             B="double s=3.0/(j+99);
+    ((int)((i+DIM)*s+j*s)%2+(int)((DIM*2-i)*s+j*s)%2)*127"
+             ></PixelFunc>
+</Elements>

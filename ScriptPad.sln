@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptPad", "ScriptPad\Scri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamProcessor", "StreamProcessor\StreamProcessor.csproj", "{2FE839DC-3263-4C40-A082-E37651A96E42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateLoader", "TemplateLoader\TemplateLoader.csproj", "{97030A78-901C-48DC-9D06-D02A335C1727}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulationLib", "..\..\UrnSimulation\SimulationLib\SimulationLib.csproj", "{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2FE839DC-3263-4C40-A082-E37651A96E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE839DC-3263-4C40-A082-E37651A96E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE839DC-3263-4C40-A082-E37651A96E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97030A78-901C-48DC-9D06-D02A335C1727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97030A78-901C-48DC-9D06-D02A335C1727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97030A78-901C-48DC-9D06-D02A335C1727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97030A78-901C-48DC-9D06-D02A335C1727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

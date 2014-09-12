@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -38,7 +39,10 @@ namespace ScriptPad {
             this.addUsingStatement("System.Collections.Generic");
             this.addUsingStatement("System.Configuration");
 
-
+            var r = new ScriptCs.PackageReference("Newtonsoft.Json", 
+                new FrameworkName(".NET Framework, Version=4.5"),
+                "6.0.5");
+            new ScriptCs.ScriptServices().InstallationProvider.InstallPackage(r.PackageId);
             var f = new ScriptHostFactory();
             var sessions = new List<IScriptPack>();
             this.session = new ScriptPackSession(sessions, null);
