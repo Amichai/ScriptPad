@@ -24,6 +24,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace ScriptPad {
     /// <summary>
@@ -38,9 +39,7 @@ namespace ScriptPad {
             this.UsingStatements = new ObservableCollection<string>();
             this.Assemblies = new ObservableCollection<AssemblyViewModel>();
 
-            this.addUsingStatement("System");
-            this.addUsingStatement("System.Collections.Generic");
-            this.addUsingStatement("System.Configuration");
+
 
             var r = new ScriptCs.PackageReference("Newtonsoft.Json", 
                 new FrameworkName(".NET Framework, Version=4.5"),
@@ -65,16 +64,20 @@ namespace ScriptPad {
 
             Console.SetOut(writer);
 
-            this.execute("for(int i =0; i< 5; i++) { Console.WriteLine(\"testing\"); }");
-            this.addAssembly(@"C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll");
-            this.addAssembly(@"C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll");
-            this.addAssembly(@"C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll");
-            this.addAssembly(@"C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll");
-            this.execute(@"
-System.Reactive.Linq.Observable.Interval(TimeSpan.FromSeconds(1)).Subscribe(i => {
-    Console.WriteLine(i);
-});
-            ");
+            this.fromXml(@"..\..\PadState.xml");
+        }
+
+        private void fromXml(string path) {
+            XElement xml = XElement.Load(path);
+            foreach (var u in xml.Element("UsingStatements").Elements()) {
+                this.addUsingStatement(u.Value);
+            }
+            foreach (var u in xml.Element("Assemblies").Elements()) {
+                this.addAssembly(u.Value);
+            }
+            foreach (var u in xml.Element("ToExecute").Elements()) {
+                this.execute(u.Value);
+            }
         }
 
         private List<string> commandStack = new List<string>();
