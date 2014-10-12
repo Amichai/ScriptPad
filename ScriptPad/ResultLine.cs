@@ -27,5 +27,9 @@ namespace ScriptPad {
                 }
             }
         }
+
+        public override string ToString() {
+            return string.Format("{0}{1}", this.Prefix, this.Value);
+        }
     }
 }

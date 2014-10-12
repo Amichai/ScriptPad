@@ -13,6 +13,7 @@ using System.Xml.Linq;
 namespace TemplateLoader.Elements.IRenderable {
     class PixelFunc : IRenderable, IAmNamed {
         private ExecutionEngine engine = new ExecutionEngine();
+        private DynamicLinqExecutionEngine engine2 = new DynamicLinqExecutionEngine();
         public PixelFunc() {
             var r = engine.Execute(string.Format("var DIM = {0};", this.Width));
 
@@ -32,14 +33,23 @@ namespace TemplateLoader.Elements.IRenderable {
         private DoubleArrayColor data;
 
         public UIElement Render() {
+            var parameters = new System.Linq.Expressions.ParameterExpression[] {
+              System.Linq.Expressions.Expression.Parameter(typeof(int), "i"),
+                        System.Linq.Expressions.Expression.Parameter(typeof(int), "j"),  
+                        System.Linq.Expressions.Expression.Parameter(typeof(int), "DIM"),  
+
+            };
+            var rComp = engine2.Compilation<int>(R, parameters);
+
+            var gComp = engine2.Compilation<int>(G,parameters);
+
+            var bComp = engine2.Compilation<int>(B,parameters);
             for (int i = 0; i < Width; i++) {
-                engine.Execute(string.Format("var i = {0};", i));
                 for (int j = 0; j < Height; j++) {
-                    engine.Execute(string.Format("var j = {0};", j));
                     byte r, g, b;
-                    r = (byte)engine.Eval<int>(R);
-                    g = (byte)engine.Eval<int>(G);
-                    b = (byte)engine.Eval<int>(B);
+                    r = (byte)rComp.DynamicInvoke(i, j);
+                    g = (byte)gComp.DynamicInvoke(i, j);
+                    b = (byte)bComp.DynamicInvoke(i, j);
                     Color c = Color.FromRgb(r, g, b);
                     data.PixelSet(new Vector(i, j), c);
                 }

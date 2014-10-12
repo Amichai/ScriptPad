@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PadState>
+  <UsingStatements>
+    <Using>System</Using>
+    <Using>System.Collections.Generic</Using>
+    <Using>System.Configuration</Using>
+  </UsingStatements>
+  <Assemblies>
+    <Assembly>C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</Assembly>
+    <Assembly>C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</Assembly>
+    <Assembly>C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</Assembly>
+    <Assembly>C:\Users\amichai\Documents\MyProjects\ScriptPad.git\trunk\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</Assembly>
+  </Assemblies>
+  <ToExecute>
+    <Input>
+      System.Reactive.Linq.Observable.Interval(TimeSpan.FromSeconds(1)).Subscribe(i => {
+      Console.WriteLine(i);
+      });
+    </Input>
+  </ToExecute>
+</PadState>
