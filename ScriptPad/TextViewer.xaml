@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ScriptPad.TextViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <Border BorderThickness="1" BorderBrush="Black">
+    <ScrollViewer Margin="5" HorizontalScrollBarVisibility="Auto" Name="scrollViewer">
+        <ItemsControl  Name="logLinesControl">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding LineNumber}" Padding="6 0 10 0" Background="White" Foreground="DarkBlue" FontFamily="Courier"/>
+                        <TextBox FontFamily="Courier" 
+                                 Text="{Binding Value}" FontSize="12" Grid.Column="1" Background="White" TextWrapping="Wrap"/>
+                        <ItemsControl ItemsSource="{Binding Highlights}" Grid.Column="1">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Width="{Binding Path=GetRectangle.Width}" Height="{Binding Path=GetRectangle.Height}" HorizontalAlignment="Left"
+                                   Fill="{Binding Path=GetRectangle.Fill}" Opacity="{Binding Path=GetRectangle.Opacity}" Margin="{Binding Path=GetRectangle.Margin}"></Rectangle>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"></StackPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </ScrollViewer>
+    </Border>
+</UserControl>

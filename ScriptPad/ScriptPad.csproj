@@ -126,9 +126,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AssemblyViewModel.cs" />
+    <Compile Include="Highlight.cs" />
+    <Compile Include="LogLine.cs" />
     <Compile Include="ObservableCollections.cs" />
     <Compile Include="ResultLine.cs" />
     <Compile Include="ResultLines.cs" />
+    <Compile Include="TextViewer.xaml.cs">
+      <DependentUpon>TextViewer.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +147,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TextViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -170,12 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\Dev\trunk\ThreeByte.Logging\LogAnalyzer\LogAnalyzer.Lib\LogAnalyzer.Lib.csproj">
-      <Project>{5ef3f394-ed4f-4647-a7d2-907142192929}</Project>
-      <Name>LogAnalyzer.Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="PadState.xml" />

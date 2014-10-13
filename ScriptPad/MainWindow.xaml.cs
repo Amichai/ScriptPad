@@ -39,11 +39,9 @@ namespace ScriptPad {
             this.UsingStatements = new ObservableCollection<string>();
             this.Assemblies = new ObservableCollection<AssemblyViewModel>();
 
-
-
-            var r = new ScriptCs.PackageReference("Newtonsoft.Json", 
-                new FrameworkName(".NET Framework, Version=4.5"),
-                "6.0.5");
+            //var r = new ScriptCs.PackageReference("Newtonsoft.Json", 
+            //    new FrameworkName(".NET Framework, Version=4.5"),
+            //    "6.0.5");
             
             
             var f = new ScriptHostFactory();
@@ -52,6 +50,7 @@ namespace ScriptPad {
             this.session = new ScriptPackSession(sessions, null);
             engine = new ScriptCs.Engine.Roslyn.RoslynScriptEngine(f, 
                 log);
+            
 
             ConsoleWriter writer = new ConsoleWriter();
             writer.WriteEvent += (s, e) => {
@@ -65,6 +64,7 @@ namespace ScriptPad {
             Console.SetOut(writer);
 
             this.fromXml(@"..\..\PadState.xml");
+            
         }
 
         private void fromXml(string path) {
