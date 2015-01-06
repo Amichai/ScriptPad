@@ -131,6 +131,7 @@
     <Compile Include="ObservableCollections.cs" />
     <Compile Include="ResultLine.cs" />
     <Compile Include="ResultLines.cs" />
+    <Compile Include="ScriptEngine.cs" />
     <Compile Include="TextViewer.xaml.cs">
       <DependentUpon>TextViewer.xaml</DependentUpon>
     </Compile>

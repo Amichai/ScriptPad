@@ -2,3 +2,8 @@
 /ScriptPad/bin/Debug
 /ScriptPad/obj/Debug
 /packages
+ComponentBuilder/bin/
+ComponentBuilder/obj/
+TemplateLoader/obj/
+StreamProcessor/bin/
+StreamProcessor/obj/

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptPad", "ScriptPad\ScriptPad.csproj", "{E3CD7762-7E0A-4959-9D0D-9F51791E159F}"
 EndProject
@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{247BA6
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentBuilder", "ComponentBuilder\ComponentBuilder.csproj", "{9203B550-A871-47E5-B6B6-E8E2696705EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20D7B14B-4FD0-4C38-A880-CF6BDBF07028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9203B550-A871-47E5-B6B6-E8E2696705EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9203B550-A871-47E5-B6B6-E8E2696705EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9203B550-A871-47E5-B6B6-E8E2696705EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9203B550-A871-47E5-B6B6-E8E2696705EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

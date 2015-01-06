@@ -39,19 +39,6 @@ namespace ScriptPad {
             this.UsingStatements = new ObservableCollection<string>();
             this.Assemblies = new ObservableCollection<AssemblyViewModel>();
 
-            //var r = new ScriptCs.PackageReference("Newtonsoft.Json", 
-            //    new FrameworkName(".NET Framework, Version=4.5"),
-            //    "6.0.5");
-            
-            
-            var f = new ScriptHostFactory();
-            
-            var sessions = new List<IScriptPack>();
-            this.session = new ScriptPackSession(sessions, null);
-            engine = new ScriptCs.Engine.Roslyn.RoslynScriptEngine(f, 
-                log);
-            
-
             ConsoleWriter writer = new ConsoleWriter();
             writer.WriteEvent += (s, e) => {
                 this.addResultLine(e.Value, ResultLineType.output);
@@ -85,7 +72,7 @@ namespace ScriptPad {
 
         private bool addUsingStatement(string s) {
             this.UsingStatements.Add(s);
-            this.namespaces.Add(s);
+            this.scriptEngine.AddNamespace(s);
             return true;
         }
 
@@ -107,9 +94,7 @@ namespace ScriptPad {
             }
         }
 
-        private RoslynScriptEngine engine;
-        private ScriptPackSession session;
-        private List<string> namespaces = new List<string>();
+        private ScriptEngine scriptEngine = new ScriptEngine();
 
         private ResultLines _ResultLines;
         public ResultLines ResultLines {
@@ -120,7 +105,6 @@ namespace ScriptPad {
             }
         }
 
-        private AssemblyReferences refs = new AssemblyReferences();
 
         private string input {
             get {
@@ -158,7 +142,8 @@ namespace ScriptPad {
             this.ResultLines.Add(input, ResultLineType.input);
             this.commandStack.Add(input);
             this.commandStackPointerIndex = this.commandStack.Count() - 1;
-            var r = this.engine.Execute(input, null, refs, namespaces, session);
+            //var r = this.engine.Execute(input, null, refs, namespaces, session);
+            var r = this.scriptEngine.Execute(input);
             if (r.ReturnValue != null) {
                 this.addResultLine(r.ReturnValue.ToString(), ResultLineType.output);
             }
@@ -207,7 +192,6 @@ namespace ScriptPad {
 
         private void addAssembly(string path) {
             this.Assemblies.Add(new AssemblyViewModel(path));
-            refs.PathReferences.Add(path);
         }
     }
 }
